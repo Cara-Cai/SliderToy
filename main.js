@@ -2,8 +2,18 @@ import * as THREE from "three";
 import { OrbitControls } from "https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js";
 
 let camera, controls, scene, renderer;
+// let dis=500;
+const btn = document.getElementById("BGbutton")
 const torusBox = [];
 
+btn.addEventListener("click",function(){
+  camera.position.z = 800;
+  slider.value=0;
+  torusBox.forEach((torusMesh) => {
+    torusMesh.scale.set(1, 1, 1);
+  });
+
+})
 
 
 init();
@@ -19,6 +29,8 @@ function init() {
 
 
   camera.position.z = parseFloat(slider.value);
+  // camera.position.z = dis;
+
 
   slider.addEventListener('input', function() {
     camera.position.z = parseFloat(this.value);
